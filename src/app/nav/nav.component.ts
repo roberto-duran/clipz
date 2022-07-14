@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ModalService} from "../services/modal.service";
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from "../services/modal.service";
 
 @Component({
     selector: 'app-nav',
@@ -14,7 +14,7 @@ export class NavComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    openModal($event: Event): void{
+    openModal($event: Event): void {
         $event.preventDefault();
         this.modal.toggleModal('auth');
     }
