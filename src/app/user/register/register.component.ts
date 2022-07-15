@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "../../services/auth.service";
 import IUser from "../../models/user.model";
+import { RegisterValidators } from '../validators/register-validators';
+import { EmailTaken } from '../validators/email-taken';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
     inSubmission = false
-    constructor(private auth: AuthService) {}
+    constructor(
+        private auth: AuthService,
+        private emailTaken: EmailTaken
+    ) { }
 
     name = new FormControl('', [
         Validators.required, Validators.minLength(3)
@@ -19,8 +24,8 @@ export class RegisterComponent {
         [
             Validators.required,
             Validators.email
-        ])
-    age = new FormControl <number | null>(null,
+        ], [this.emailTaken.validate])
+    age = new FormControl<number | null>(null,
         [
             Validators.required,
             Validators.min(18),
@@ -52,7 +57,7 @@ export class RegisterComponent {
         password: this.password,
         confirm_password: this.confirm_password,
         phone: this.phone
-    })
+    }, [RegisterValidators.match('password', 'confirm_password')])
 
     async register() {
         this.showAlert = true
@@ -60,9 +65,9 @@ export class RegisterComponent {
         this.alertColor = 'blue'
         this.inSubmission = true
 
-        try{
+        try {
             await this.auth.createUser(this.registerForm.value as IUser)
-        } catch (e){
+        } catch (e) {
             console.error(e)
             this.alertMsg = 'An unexpected error occurred. Please try again later'
             this.alertColor = 'red'

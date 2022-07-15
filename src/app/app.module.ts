@@ -9,11 +9,15 @@ import { AngularFireModule} from "@angular/fire/compat";
 import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavComponent
+        NavComponent,
+        HomeComponent,
+        AboutComponent
     ],
     imports: [
         BrowserModule,
