@@ -2,7 +2,7 @@
 <header id="header" class="bg-secondary">
     <nav class="container mx-auto flex justify-start items-center py-8 px-4">
         <!-- App Name -->
-        <a class="text-3xl text-indigo-400 font-bold uppercase mr-4" href="index.html">Clipz</a>
+        <a class="text-3xl text-indigo-400 font-bold uppercase mr-4" routerLink="/">Clipz</a>
 
         <div class="flex flex-grow items-center">
             <!-- Primary Navigation -->
@@ -12,19 +12,22 @@
                     <a class="px-2" href="#" (click)="openModal($event)">Login / Register</a>
                 </li>
                 <ng-template #authLinks>
-                    <li>
-                        <a class="px-2" href="#">Manage</a>
+                    <li routerLinkActive="text-indigo-400">
+                        <a class="px-2" routerLink="/manage" routerLinkActiveOptions="{ exact: true }"
+                            [queryParams]="{sort: 'asc'}">Manage</a>
+                    </li>
+                    <li routerLinkActive="text-indigo-400">
+                        <a class="px-2" routerLink="/upload">Upload</a>
                     </li>
                     <li>
-                        <a class="px-2" href="#">Upload</a>
-                    </li>
-                    <li>
-                        <a class="px-2" href="#" (click)="logout($event)">logout</a>
+                        <a class="px-2" href="#" (click)="auth.logout($event)">logout</a>
                     </li>
                 </ng-template>
 
-                <li>
-                    <a class="px-2" href="about">About</a>
+                <li routerLinkActive="text-indigo-400">
+                    <a class="px-2" routerLink="/about">
+                        About
+                    </a>
                 </li>
             </ul>
 
