@@ -1,10 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {FormsModule} from "@angular/forms";
+import {AlertComponent} from "../../shared/alert/alert.component";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AlertComponent
+    ],
+    standalone: true
 })
 export class LoginComponent implements OnInit {
     credentials = {
@@ -15,8 +24,7 @@ export class LoginComponent implements OnInit {
     alertMsg = 'Please wait! Your account is been created'
     alertColor = 'blue'
     inSubmition = false;
-    constructor(private auth: AngularFireAuth) {
-    }
+    constructor(private auth: AngularFireAuth) { }
 
     ngOnInit(): void {
     }

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserModule } from "./user/user.module";
 import { NavComponent } from './nav/nav.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../environments/environment";
@@ -16,6 +15,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AngularFireStorageModule } from "@angular/fire/compat/storage";
 import { ClipsListComponent } from './clips-list/clips-list.component';
 import { FbTimestampPipe } from './pipes/fb-timestamp.pipe';
+import {AuthModalComponent} from "./user/auth-modal/auth-modal.component";
+import {InputComponent} from "./shared/input/input.component";
+import {AlertComponent} from "./shared/alert/alert.component";
 
 @NgModule({
     declarations: [
@@ -30,12 +32,14 @@ import { FbTimestampPipe } from './pipes/fb-timestamp.pipe';
     ],
     imports: [
         BrowserModule,
-        UserModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFirestoreModule,
         AppRoutingModule,
-        AngularFireStorageModule
+        AngularFireStorageModule,
+        AuthModalComponent,
+        InputComponent,
+        AlertComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

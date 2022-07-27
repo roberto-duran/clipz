@@ -1,21 +1,33 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../services/auth.service";
+import {CommonModule} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
 import IUser from "../../models/user.model";
-import { RegisterValidators } from '../validators/register-validators';
-import { EmailTaken } from '../validators/email-taken';
+import {RegisterValidators} from '../validators/register-validators';
+import {EmailTaken} from '../validators/email-taken';
+
+import {InputComponent} from 'src/app/shared/input/input.component';
+import {AlertComponent} from 'src/app/shared/alert/alert.component';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+    styleUrls: ['./register.component.scss'],
+    standalone: true,
+    imports: [
+        CommonModule,
+        InputComponent,
+        AlertComponent,
+        ReactiveFormsModule]
 })
 export class RegisterComponent {
     inSubmission = false
+
     constructor(
         private auth: AuthService,
         private emailTaken: EmailTaken
-    ) { }
+    ) {
+    }
 
     name = new FormControl('', [
         Validators.required, Validators.minLength(3)

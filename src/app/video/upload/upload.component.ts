@@ -4,7 +4,7 @@ import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/compat/st
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app'
 import {v4 as uuid} from 'uuid';
-import {last, switchMap, combineLatestWith, forkJoin } from 'rxjs';
+import { switchMap, combineLatestWith, forkJoin } from 'rxjs';
 import {FfmpegService} from "../../services/ffmpeg.service";
 
 import {ClipService} from 'src/app/services/clip.service';

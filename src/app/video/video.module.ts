@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import {InputComponent} from "../shared/input/input.component";
+import {AlertComponent} from "../shared/alert/alert.component";
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     EditComponent,
     SafeUrlPipe
   ],
-  imports: [
-    CommonModule,
-    VideoRoutingModule,
-    SharedModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        VideoRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        InputComponent,
+        AlertComponent
+    ]
 })
 export class VideoModule { }
